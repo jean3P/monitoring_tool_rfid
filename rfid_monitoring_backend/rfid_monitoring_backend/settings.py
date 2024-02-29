@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'corsheaders',
+    "rfid_tool",
+    "channels"
 ]
 
 MIDDLEWARE = [
@@ -47,6 +50,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = "rfid_monitoring_backend.urls"
@@ -62,11 +67,17 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'corsheaders.middleware.CorsMiddleware',
+                'django.middleware.common.CommonMiddleware',
             ],
         },
     },
 ]
 
+ROOT_URLCONF = 'rfid_monitoring_backend.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = ["*"]
 WSGI_APPLICATION = "rfid_monitoring_backend.wsgi.application"
 
 
@@ -119,5 +130,7 @@ STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+ASGI_APPLICATION = "rfid_monitoring_backend.asgi.application"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
