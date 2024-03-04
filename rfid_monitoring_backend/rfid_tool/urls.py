@@ -1,10 +1,9 @@
 from django.urls import path
-from . import views
+
+from rfid_tool.views import get_arduino_data_by_id
 
 API_VERSION = '1.0'
 
 urlpatterns = [
-    path(f'{API_VERSION}/tags/', views.tag_list, name='tag_list'),
-    path(f'{API_VERSION}/tags/create/', views.tag_create, name='tag_create'),
-    path(f'{API_VERSION}/user/<str:username>/', views.user_profile, name='user_profile'),
+    path(f'{API_VERSION}/arduino-data/<int:id>/', get_arduino_data_by_id, name='get_arduino_data_by_id'),
 ]
