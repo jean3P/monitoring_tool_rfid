@@ -5,11 +5,6 @@
  *
  * @param {Object} params - Object containing the following parameters:
  *   - tags {Array} - An array of tag objects.
- *
- * @return {JSX.Element} - A JSX element containing a list of tags.
- *     Returns a paragraph element with a message if the tags array is empty.
- *     Otherwise, returns an unordered list (ul) element with each tag item rendered as a list item (li).
- *     Each list item contains the tag's RFID UID, model, and created at date.
  */
 
 function TagList({ tags }) {
